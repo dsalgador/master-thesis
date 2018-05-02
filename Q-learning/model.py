@@ -8,9 +8,11 @@ from tank import Tank
 from truck import Truck
 import copy
 
-import functions as fnc
 
-import constants as ct
+import gym_pdsystem.utils.utilsq as ut
+import gym_pdsystem.utils.constants as ct
+import gym_pdsystem.utils.functions as fnc
+
 
 COEFF = ct.COEFF
 
