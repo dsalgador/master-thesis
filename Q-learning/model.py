@@ -250,9 +250,10 @@ class System():
         return(False)    
     
     def number_of_tanks_below_last_level(self):
-         """
+        """
         Returns the number of tanks whose current load correspond to the lower (last) discrete load level.
         """
+
         i = 0
         for tank in self.tanks:
             if tank.is_below_last_level():

@@ -36,9 +36,10 @@ class Tank():
         self.load = max(0, self.load - self.rate)
        
     def load_to_lvl(self):
-         """
+        """
         Convert the current load of the tank to the corresponding dicretized level
         """
+
         levels = self.levels
         lvl = np.amin(np.where(np.isin(levels,levels[ (levels >= self.load) ])))
         if lvl < 0:
