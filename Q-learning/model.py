@@ -62,19 +62,20 @@ class System():
             return(self.trucks)
     
     def n_states(self):
+        """
+        Return the total number of possible states that the system of trucks and tanks can have.
+        """
         n_s = 1
         possible_fractions_deliverable = []
         for i,truck in enumerate(self.trucks):
                possible_fractions_deliverable.append(len(truck.fractions))
         
-        #print("possible_fractions_deliverable", possible_fractions_deliverable)
         n_s = n_s * (self.n+1)**(self.k) 
         
         for i in range(self.k):
             n_s = n_s * (possible_fractions_deliverable[i])
         
         n_s = n_s * np.prod([len(self.tanks_level[i]) for i in range(self.n)])
-        #print([self.tanks_level[i] for i in range(self.n)])
                        
         return(n_s)    
                
@@ -111,11 +112,16 @@ class System():
 
         
     def state(self):
-        #[ positions, truck-loads, tank-loads]
+        """
+        Returns the current (continuous) state of the system
+        """
         s = [self.truck_positions(), self.truck_loads(), self.tank_loads()]
         return(s)
     
     def discrete_state(self):
+        """
+        Returns the current discretized state version of the system
+        """
         ds = [ [],[] ,[] ]
         ds[0] = self.s[0]
         
@@ -129,6 +135,10 @@ class System():
         return(ds)    
             
     def set_discrete_state(self, d_state):
+        """
+        Update the current discretized state version of the system
+        """
+
         ds = [ [],[] ,[] ]
 
         for i in d_state[:self.k]:
@@ -142,18 +152,31 @@ class System():
         
         
     def update_state(self):
+        """
+        Update both the discretized and contiuous state of the system (just in case some tank or truck levels,
+        truck positions, etc. have been modified/updated)
+        """
         self.s = self.state()
         self.ds = self.discrete_state()
         
     def state_to_string(self):
+        """
+        Returns a string that encodes the current discrete state of the system
+        """
         state_str = ''.join(str(''.join(str(y) for y in x)) for x in self.ds)
         return(state_str)
     
     def action_to_string(self):
+        """
+        Returns a string that encodes the current discrete action taken by the system
+        """
         action_str = ''.join(str(''.join(str(y) for y in x)) for x in self.da)
         return(action_str)
         
     def state_action_to_string(self):
+        """
+        Returns a string that encodes the current discrete state-action of the system
+        """
         state_str = ''.join(str(''.join(str(y) for y in x)) for x in self.ds)
         action_str = ''.join(str(''.join(str(y) for y in x)) for x in self.da)
         sa_str = ''.join([state_str, action_str])
@@ -164,10 +187,11 @@ class System():
             raise ValueError('sa_str of wrong length in state_action_to_string()')
             
         return(sa_str)
-        
-        
+            
     def visualize(self, show = False):
-            #s = self.state()
+            """
+            TO DO
+            """
             index = np.arange(self.n)
             tanks_max_load = self.tanks_max_load
             tank_loads = self.tank_loads()
@@ -185,6 +209,9 @@ class System():
             return([index, tanks_max_load, tank_loads, tanks_id])
         
     def visualize_step(self, args): 
+            """
+            TO DO
+            """
             index, tanks_max_load, tank_loads, tanks_id = args;
             plt.bar(index, tanks_max_load, color = 'black')
             plt.bar(index, tank_loads, color = 'blue' )
@@ -195,12 +222,18 @@ class System():
         
     
     def is_some_tank_empty(self):
+        """
+        Returns a boolean saying if there is some tank empty (i.e., with load less than zero)
+        """
         for tank in self.tanks:
             if tank.is_empty():
                 return(True)
         return(False)    
     
     def number_of_tanks_empty(self):
+        """
+        Returns the number of tanks that are empty (i.e., with load less than zero)
+        """
         i = 0
         for tank in self.tanks:
             if tank.is_empty():
@@ -208,19 +241,24 @@ class System():
         return(i)    
     
     def is_some_tank_below_last_level(self):
+        """
+        Returns True if there is some tank whose current load correspond to the lower (last) discrete load level.
+        """
         for tank in self.tanks:
             if tank.is_under_last_level():
                 return(True)
         return(False)    
     
     def number_of_tanks_below_last_level(self):
+         """
+        Returns the number of tanks whose current load correspond to the lower (last) discrete load level.
+        """
         i = 0
         for tank in self.tanks:
             if tank.is_below_last_level():
                 i = i+1
         return(i)    
-    
-    
+  
     
     def reset_trucks_positions(self):
         for truck in self.trucks:
@@ -255,10 +293,11 @@ class System():
             
         return(R)  
             
-            
-        
-        
+    
     def random_action(self, seed = None, verbose = False):
+        """
+        TO DO
+        """
         #It is assumed that the current state of the system is updated.
         
         if seed != None:
@@ -353,6 +392,10 @@ class System():
     
     
     def deterministic_action(self, action, verbose = False):
+        """
+        TO DO
+        """
+        
         #It is assumed that the current state of the system is updated.
 
         rewards = 0
