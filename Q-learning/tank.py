@@ -9,8 +9,7 @@ class Tank():
         self.levels = np.linspace(0,self.max_load, n_discrete_load_levels+1)[1:]
         self.level_percentages = load_level_percentages
         
-        self.rate =  self.max_load * (self.level_percentages[0]+self.level_percentages[1])/2.0 #consumption_rate
-        #self.rate = consumption_rate
+        self.rate =  self.max_load * (self.level_percentages[0]+self.level_percentages[1])/2.0 #consumption rate
    
     def fill(self):
         self.load = self.max_load    
@@ -37,16 +36,13 @@ class Tank():
         self.load = max(0, self.load - self.rate)
        
     def load_to_lvl(self):
+         """
+        Convert the current load of the tank to the corresponding dicretized level
+        """
         levels = self.levels
-        #print(np.where(np.isin(levels,levels[ (levels >= self.load) ])))
-        #print("levels", levels)
-        #print("self.load, self.max_load", self.load, self.max_load)
         lvl = np.amin(np.where(np.isin(levels,levels[ (levels >= self.load) ])))
         if lvl < 0:
             raise ValueError('tank level is negative')
-        #if(lvl == -1):
-            #return(0)
-        #else:
         return(lvl)
       
     def lvl_to_load(self, lvl):

@@ -19,35 +19,16 @@ class Truck():
     def possible_delivery_quantities(self, tank_extra_capacity):
         all_delivery_quantities = self.load * self.fractions
         return(all_delivery_quantities[ all_delivery_quantities <= tank_extra_capacity].astype(list))
-    
-#     def load_to_lvl(self):
-#         levels = self.levels
-#         #print("truck", np.where(np.isin(levels,levels[ (levels >= self.load) ])))
-#         lvl = np.amin(np.where(np.isin(levels,levels[ (levels >= self.load) ])))-1
-#         if(lvl == -1):
-#             return(0)
-#         else:
-#             return(lvl)
-    
-#     def lvl_to_load(self, lvl):
-#         # Warning: this could be a load different to the one the truck has, since when discretizing in levels
-#         # we lose information depending on how width the partition intervals are.
-#         if lvl == -1:
-#             return(0)
-#         else:
-#             return(self.levels[lvl])
         
     def load_to_lvl(self):
+        """
+        Convert the current load of the truck to the corresponding dicretized level
+        """
         levels = self.levels
-        #print(np.where(np.isin(levels,levels[ (levels >= self.load) ])))
-        #print("levels", levels)
-        #print("self.load, self.max_load", self.load, self.max_load)
         lvl = np.amin(np.where(np.isin(levels,levels[ (levels >= self.load) ])))
         if lvl < 0:
             raise ValueError('tank level is negative')
-        #if(lvl == -1):
-            #return(0)
-        #else:
+
         return(lvl)
       
     def lvl_to_load(self, lvl):
@@ -56,7 +37,5 @@ class Truck():
         if lvl < 0:
             raise ValueError('tank level is negative')
         else:
-            return(self.levels[lvl])
-        
-          
+            return(self.levels[lvl])      
     
