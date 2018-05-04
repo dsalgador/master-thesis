@@ -2,7 +2,7 @@ import numpy as np
 
 class Tank():
     def __init__(self, tank_id, current_load, max_load, consumption_rate, n_discrete_load_levels,
-                load_level_percentages):
+                load_level_percentages, stochastic = False):
         self.id = tank_id
         self.load = current_load
         self.max_load = max_load
@@ -10,6 +10,8 @@ class Tank():
         self.level_percentages = load_level_percentages
         
         self.rate =  self.max_load * (self.level_percentages[0]+self.level_percentages[1])/2.0 #consumption rate
+        if stochastic:
+            self.rate = self.rate + self.rate * 0.25 * np.random.uniform(-1,1)
    
     def fill(self):
         self.load = self.max_load    
