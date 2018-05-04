@@ -35,9 +35,11 @@ class Tank():
     
     def consume(self):
         if self.stochastic:
-            self.rate = self.rate + self.rate * 0.25 * np.random.uniform(-1,1)
-   
-        self.load = max(0, self.load - self.rate)
+            new_rate = self.rate + self.rate * 0.25 * np.random.uniform(-1,1)
+            self.load = max(0, self.load - new_rate)
+
+        else:
+            self.load = max(0, self.load - self.rate)
        
     def load_to_lvl(self):
         """
