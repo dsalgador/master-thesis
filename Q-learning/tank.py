@@ -10,9 +10,8 @@ class Tank():
         self.level_percentages = load_level_percentages
         
         self.rate =  self.max_load * (self.level_percentages[0]+self.level_percentages[1])/2.0 #consumption rate
-        if stochastic:
-            self.rate = self.rate + self.rate * 0.25 * np.random.uniform(-1,1)
-   
+        self.stochastic = stochastic
+        
     def fill(self):
         self.load = self.max_load    
         
@@ -35,6 +34,9 @@ class Tank():
             return(False)
     
     def consume(self):
+        if self.stochastic:
+            self.rate = self.rate + self.rate * 0.25 * np.random.uniform(-1,1)
+   
         self.load = max(0, self.load - self.rate)
        
     def load_to_lvl(self):
