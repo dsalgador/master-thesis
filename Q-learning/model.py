@@ -387,7 +387,7 @@ class System():
         if len(self.action_to_string()) != self.action_length:
             print("ACTION WITH WRONG LENGTH")
             
-        rewards = C_LEVELS * self.R_levels() - C_TRANSPORT * self.R_transport(COEFF, w_t, u_t) + trucks_not_deliverying * NOT_DELIVERYING_PENALTY
+        rewards = C_LEVELS * self.R_levels() - C_TRANSPORT * self.R_transport(COEFF, w_t, u_t) + C_LEVELS *trucks_not_deliverying * NOT_DELIVERYING_PENALTY
         
         return(rewards)
     
