@@ -387,9 +387,12 @@ class System():
         if len(self.action_to_string()) != self.action_length:
             print("ACTION WITH WRONG LENGTH")
             
-        rewards = C_LEVELS * self.R_levels() - C_TRANSPORT * self.R_transport(COEFF, w_t, u_t) + C_LEVELS *trucks_not_deliverying * NOT_DELIVERYING_PENALTY
+        transport_rewards = C_TRANSPORT * self.R_transport(COEFF, w_t, u_t)
+        level_rewards = C_LEVELS * self.R_levels()
         
-        return(rewards)
+        rewards = level_rewards - transport_rewards + C_LEVELS *trucks_not_deliverying * NOT_DELIVERYING_PENALTY
+        
+        return(rewards, transport_rewards, level_rewards)
     
     
     def deterministic_action(self, action, verbose = False):
@@ -454,11 +457,14 @@ class System():
             
         if verbose: print(self.da, self.a)
             
-        rewards = C_LEVELS * self.R_levels() - C_TRANSPORT * self.R_transport(COEFF, w_t, u_t) 
+        transport_rewards = C_TRANSPORT * self.R_transport(COEFF, w_t, u_t)
+        level_rewards = C_LEVELS * self.R_levels()
+            
+        rewards = level_rewards - transport_rewards #C_LEVELS * self.R_levels() - C_TRANSPORT * self.R_transport(COEFF, w_t, u_t) 
                   #+ trucks_not_deliverying * NOT_DELIVERYING_PENALTY
         
         
-        return(rewards)
+        return(rewards, transport_rewards, level_rewards)
         
             
             
