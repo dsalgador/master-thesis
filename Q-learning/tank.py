@@ -35,7 +35,7 @@ class Tank():
     
     def consume(self):
         if self.stochastic:
-            new_rate = self.rate + self.rate * 0.25 * np.random.uniform(-1,1)
+            new_rate = self.rate + self.rate * 0.10 * np.random.uniform(-1,1)
             self.load = max(0, self.load - new_rate)
 
         else:
