@@ -1,6 +1,6 @@
 import numpy as np
 import math
-import networkx as nx
+#import networkx as nx
 import random
 
 import matplotlib.pyplot as plt
@@ -26,7 +26,7 @@ P2_GLOBAL = ct.P2_GLOBAL
 
 M_GLOBAL = ct.M_GLOBAL
 
-NOT_DELIVERYING_PENALTY = P2_GLOBAL #to be equivalent/same importance as having 0 stock or surpassing max capacity levels
+NOT_DELIVERYING_PENALTY = ct.NOT_DELIVERYING_PENALTY #to be equivalent/same importance as having 0 stock or surpassing max capacity levels
 
     
 class System():
@@ -350,7 +350,7 @@ class System():
                     possible_delivery_quantities = current_truck.possible_delivery_quantities(current_extra_tank_capacity)
                     if verbose: print("Possible delivery quantities: ", possible_delivery_quantities)
                     if possible_delivery_quantities.size == 0:
-                        if verbose: print(f"Truck {truck.id} in tank {truck.pos} does not deliver")
+                        if verbose: print("Truck {} in tank {} does not deliver".format(truck.id,truck.pos))
                         random_index = len(current_truck.levels)-1 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! problem dependent
                         #alomejor habria que poner len(current_truck.levels)+1 , ya que si no esto es como poner 0 (en el caso
                         #de solo un nivel de carga de camión) y el () + 1 añadiria la acción "no descargar nada"
@@ -363,7 +363,7 @@ class System():
                         #delivery_quantity = np.random.choice(possible_delivery_quantities)
                         delivery_quantity = possible_delivery_quantities[random_index]
                         current_tank.load = current_tank.load + delivery_quantity
-                        if verbose: print(f"Truck {truck.id} in tank {truck.pos} delivers {delivery_quantity} units")
+                        if verbose: print("Truck {} in tank {} delivers {} units".format(truck.id,truck.pos,delivery_quantity))
 
                         #rewards = rewards - delivery_quantity
                         
@@ -414,6 +414,7 @@ class System():
         new_deliveries_index = []
         
         w_t = np.full(self.k, 0)
+        trucks_not_deliverying = 0
 
         
         action = action_to_int(action)
@@ -430,12 +431,24 @@ class System():
                 current_tank = self.tanks[truck.pos]
                 delivery_quantity = truck.lvl_to_load(new_delivery_index)
                 truck.load = truck.load - delivery_quantity
+                
+                #New: the truck when goes to some shop, delivers only if deliver_quantity fills in that shop.
+                
+                hipothetic_next_load = current_tank.load + delivery_quantity
+                
+                if hipothetic_next_load <= current_tank.max_load:
+                    current_tank.load = hipothetic_next_load                    
+                else: 
+                    trucks_not_deliverying = trucks_not_deliverying+1
+                    if verbose: print("Truck {} in tank {} does not deliver".format(truck.id,truck.pos))
 
-                current_tank.load = min(current_tank.load + delivery_quantity, current_tank.max_load)
+    
+                #OLD:
+                #current_tank.load = min(current_tank.load + delivery_quantity, current_tank.max_load)
                 #if the current unload is about to overfill the tank, we only fill it up intil its max capacity
                 #note that this would be a bit in contradiction with the assumption that the trucks go full and return empty,
                 #but this is needed because of the discretization of the problem.
-                #rewards = rewards - delivery_quantity
+                
             else:
                 delivery_quantity = 0
                 new_delivery_index = 0 
@@ -459,8 +472,9 @@ class System():
             
         transport_rewards = C_TRANSPORT * self.R_transport(COEFF, w_t, u_t)
         level_rewards = C_LEVELS * self.R_levels()
+        extra_rewards = C_LEVELS * trucks_not_deliverying * NOT_DELIVERYING_PENALTY
             
-        rewards = level_rewards - transport_rewards #C_LEVELS * self.R_levels() - C_TRANSPORT * self.R_transport(COEFF, w_t, u_t) 
+        rewards = level_rewards - transport_rewards + extra_rewards  #C_LEVELS * self.R_levels() - C_TRANSPORT * self.R_transport(COEFF, w_t, u_t) 
                   #+ trucks_not_deliverying * NOT_DELIVERYING_PENALTY
         
         
