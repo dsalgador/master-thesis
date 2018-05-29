@@ -342,7 +342,7 @@ class System():
                 truck_pos = current_truck.pos
                 
                 if truck_pos != self.n:
-                    if verbose: print("truck_pos: ", truck_pos)
+                    #if verbose: print("truck_pos: ", truck_pos)
 
                     #current_truck = truck
                     current_tank = self.tanks[truck_pos]
@@ -468,7 +468,7 @@ class System():
         if len(self.action_to_string()) != self.action_length:
             print("ACTION WITH WRONG LENGTH")
             
-        if verbose: print(self.da, self.a)
+        #if verbose: print(self.da, self.a)
             
         transport_rewards = C_TRANSPORT * self.R_transport(COEFF, w_t, u_t)
         level_rewards = C_LEVELS * self.R_levels()
