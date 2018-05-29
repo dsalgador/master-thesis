@@ -474,8 +474,7 @@ class System():
         level_rewards = C_LEVELS * self.R_levels()
         extra_rewards = C_LEVELS * trucks_not_deliverying * NOT_DELIVERYING_PENALTY
             
-        rewards = level_rewards - transport_rewards + extra_rewards  #C_LEVELS * self.R_levels() - C_TRANSPORT * self.R_transport(COEFF, w_t, u_t) 
-                  #+ trucks_not_deliverying * NOT_DELIVERYING_PENALTY
+        rewards = level_rewards - transport_rewards + extra_rewards  
         
         
         return(rewards, transport_rewards, level_rewards)
