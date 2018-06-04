@@ -48,7 +48,7 @@ class System():
         self.trucks_level = self.truck_levels()
         
         #
-        self.actions_dim = self.n * self.k
+        self.actions_dim = (self.n+1) ** self.k
         self.states_dim = self.n_states()
         self.state_length = 2*self.k + self.n
         self.action_length = 2*self.k
@@ -109,6 +109,9 @@ class System():
     
     def tank_levels(self):
         return([self.tanks[i].levels for i in range(self.n)])
+    
+    def tank_rates(self):
+        return([self.tanks[i].rate for i in range(self.n)])
 
         
     def state(self):
