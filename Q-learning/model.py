@@ -392,7 +392,7 @@ class System():
         
         rewards = level_rewards - transport_rewards + C_LEVELS *trucks_not_deliverying * NOT_DELIVERYING_PENALTY
         
-        return(rewards, transport_rewards, level_rewards)
+        return(rewards, transport_rewards, level_rewards, trucks_not_deliverying)
     
     
     def deterministic_action(self, action, verbose = False):
@@ -477,7 +477,7 @@ class System():
         rewards = level_rewards - transport_rewards + extra_rewards  
         
         
-        return(rewards, transport_rewards, level_rewards)
+        return(rewards, transport_rewards, level_rewards, trucks_not_deliverying)
         
             
             
