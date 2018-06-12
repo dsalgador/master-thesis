@@ -90,3 +90,13 @@ def normalize_rewards(all_discounted_rewards): #, discount_rate):
     return [(discounted_rewards - reward_mean)/reward_std for discounted_rewards in all_discounted_rewards]
 ########################################################
 
+def my_indicator(x_min, x, x_max):
+            if (x> x_min) & (x<=x_max):
+                return 1
+            else: 
+                return 0
+def is_empty(x):
+        if x <=0:
+            return 1
+        else: 
+            return 0
