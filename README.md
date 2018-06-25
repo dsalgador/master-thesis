@@ -67,7 +67,10 @@ notebooks and simulation folders for that part.
 
 ### 3. Policy-Gradient (Deep Reinforcement Learning)
 
-Coming soon...
+In chapter 6 we aruse DNN to play the role of a parametrized policy $\pi_\theta$, and introduce
+a particular type of algorithms, Policy Gradient (PG), that allow us to train the network to improve
+the policy by means of simulated episodes. The field where there are used Deep Neural Networks
+to solve Reinforcement Learning problems is called Deep Reinforcement Learning (DRL). In [this](https://github.com/dsalgador/master-thesis/tree/master/Policy-Gradient) folder we have put all simulations and notebooks related to that part.
 
 
 ## References
@@ -107,7 +110,7 @@ for product delivery. In Johannes Fürnkranz, Tobias Scheffer, and Myra Spiliopo
 Machine Learning: ECML 2006, pages 735–742, Berlin, Heidelberg, 2006. Springer Berlin
 Heidelberg.
 
-For the rest of the references see [this](https://github.com/dsalgador/master-thesis/blob/master/thesis.pdf)
+For the rest of the references see the full document [here](https://github.com/dsalgador/master-thesis/blob/master/thesis.pdf)
 
 ## License
 This work is under a GNU [license](https://github.com/dsalgador/master-thesis/blob/master/LICENSE)
