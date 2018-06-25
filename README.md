@@ -77,12 +77,10 @@ clinical trials. Statistics in Medicine, 28(26):3294–3315.
 Jiaji Li, Dan Melamed, Gal Oshri, Oswaldo Ribas, Siddhartha Sen, and Alex Slivkins. A
 multiworld testing decision service. CoRR, abs/1606.03966, 2016.
 * [5] Han Cai, Kan Ren, Weinan Zhang, Kleanthis Malialis, Jun Wang, Yong Yu, and Defeng Guo.
-Real-time bidding by reinforcement learning in display advertising. CoRR, abs/1701.02490,
-2017.
+Real-time bidding by reinforcement learning in display advertising. CoRR, abs/1701.02490, 2017.
 * [6] Naoki Abe, Naval Verma, Chid Apte, and Robert Schroko. Cross channel optimized marketing
 by reinforcement learning. In Proceedings of the Tenth ACM SIGKDD International Conference
-on Knowledge Discovery and Data Mining, KDD ’04, pages 767–772, New York, NY, USA,
-2004. ACM.
+on Knowledge Discovery and Data Mining, KDD ’04, pages 767–772, New York, NY, USA, 2004. ACM.
 * [7] Francesco Bertoluzzo and Marco Corazza. Reinforcement learning for automated financial
 trading: Basics and applications. In Simone Bassis, Anna Esposito, and Francesco Carlo
 Morabito, editors, Recent Advances of Neural Network Models and Applications, pages 197–
