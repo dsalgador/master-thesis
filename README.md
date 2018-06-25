@@ -52,7 +52,7 @@ a large number of shops and trucks. In addition, we have developed an OpenAI gym
 for our PD problem which is available in a GitHub repository [here](https://github.com/dsalgador/gym-pdsystem).
 
 ## Contents
-The following subsections are the main parts of the work. The first one is about classical reinforcement learning (the Q-learning algorithm). The second one focus on classical supervised Machine Learning using Neural Networks in the context of multiclass calssification. The third part focus ona more recent reinforcement learning algorithm called Policy Gradient, and which by the use of Neural networks scales much better than Q-learning with the classical approach.
+The following subsections are the main parts of the work. The first one is about classical reinforcement learning (the Q-learning algorithm). The second one focus on classical supervised Machine Learning using Neural Networks in the context of multiclass calssification. The third part focus on a more recent reinforcement learning algorithm called Policy Gradient, and which by the usage of Neural networks it scales much better than with Q-learning with the classical approach.
 
 ### 1. Q-learning (Classical Reinforcement Learning)
 In [this](https://github.com/dsalgador/master-thesis/tree/master/Q-learning) first part (from Chapter 4) we introduce Q-learning, one of the most popular value-based algorithms aimed to learn the optimal Q-values and from them define an optimal policy. Although Q-learning algorithm is a bit antiquate, it will serve us as an starting point to learn classical reinforcement learning by applying it to our product delivery problem.
