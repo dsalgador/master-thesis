@@ -1,4 +1,4 @@
-# Solving a Complex Optimization Problem for Product Delivery with Reinforcement Learning and Artificial Neural Networks
+# Solving an Optimization Problem for Product Delivery with Reinforcement Learning and Deep Neural Networks
 Master's thesis about Reinforcement Learning (RL), Deep RL and Optimization.
 
 * **Author**: Daniel Salgado Rojo
