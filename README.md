@@ -55,11 +55,15 @@ for our PD problem which is available in a GitHub repository [here](https://gith
 The following subsections are the main parts of the work. The first one is about classical reinforcement learning (the Q-learning algorithm). The second one focus on classical supervised Machine Learning using Neural Networks in the context of multilabel calssification. The third part focus ona more recent reinforcement learning algorithm called Policy Gradient, and which by the use of Neural networks scales much better than Q-learning with the classical approach.
 
 ### 1. Q-learning (Classical Reinforcement Learning)
-In [this](https://github.com/dsalgador/master-thesis/tree/master/Q-learning) first part...
+In [this](https://github.com/dsalgador/master-thesis/tree/master/Q-learning) first part (from Chapter 4) we introduce Q-learning, one of the most popular value-based algorithms aimed to learn the optimal Q-values and from them define an optimal policy. Although Q-learning algorithm is a bit antiquate, it will serve us as an starting point to learn classical reinforcement learning by applying it to our product delivery problem.
 
 ### 2. Imitation-Learning (Supervised Machine Learning: Classification)
 
-Coming soon...
+In Chapter 5 we introduce the basic concepts about Artificial Neural Networks, more concretely
+Deep Neural Networks (DNN). We start with an introduction of what is a NN model, and then focus
+on how to train it. Finally we present an application of DNN to classification, for a toy example
+related to the product delivery problem we are working with in this thesis. In [this](https://github.com/dsalgador/master-thesis/tree/master/Imitation-Learning) folder we can find the
+notebooks and simulation folders for that part.
 
 ### 3. Policy-Gradient (Deep Reinforcement Learning)
 
