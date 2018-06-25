@@ -15,6 +15,7 @@ company, Grupo AIA, where I have been doing an internship from March to June 201
 solution proposed to the client uses classical constraint optimization techniques which tend to be
 slow when finding optimal solutions and do not scale properly when the number of shops and trucks
 used to deliver a product increases.
+
 Machine Learning (ML) has become a very popular field in Data Science due to the increase in
 computation power in recent years. It is usually said that ML techniques divide in two types,
 Supervised Learning and Unsupervised Learning. However, this is not a complete classification.
@@ -23,6 +24,7 @@ two: Reinforcement Learning (RL). RL consists of techniques that have been used 
 the field of Artificial Intelligence for many applications in fields such as robotics and industrial
 automation [1], health and medicine [2, 3], Media and Advertising [4, 5, 6], Finance [7], text, speech
 and dialog systems [8, 9], and so forth.
+
 RL provides a nice framework to model a large variety of stochastic optimization problems [10].
 Nevertheless, classical approaches to large RL problems suffer from three curses of dimensionality:
 explosions in state and action spaces, and a large number of possible next states of an action
@@ -38,6 +40,7 @@ example with an small number of trucks and shops. However, in practical situatio
 of shops and trucks may be so large (for instance, lets say 30 shops and about 7 to 10 trucks) that
 the explosion of the dimensionality of the state and action spaces would make those classical RL
 techniques impractical.
+
 In this thesis [13] we present a novel approach for solving product delivery problems by means
 of Reinforcement Learning and Deep Neural Networks (DNN), a field also referred to as Deep
 Reinforcement Learning (DRL). The idea is that the nonlinearity and complexity of DNN should
