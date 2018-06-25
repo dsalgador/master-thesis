@@ -112,5 +112,11 @@ Heidelberg.
 
 For the rest of the references see the full document [here](https://github.com/dsalgador/master-thesis/blob/master/thesis.pdf)
 
+## Prerequisites
+* Python (tested for python 3.5 and 3.6)
+* The gym-pdsystem python package is needed due to some of the python libraries that are found there. 
+  Just clone the repository from [here](https://github.com/dsalgador/gym-pdsystem/tree/master/gym_pdsystem)
+* Tensorflow library
+
 ## License
 This work is under a GNU [license](https://github.com/dsalgador/master-thesis/blob/master/LICENSE)
